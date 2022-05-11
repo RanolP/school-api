@@ -1,0 +1,24 @@
+{
+  "name": "school-api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsm src/index.ts | pino-pretty",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/compress": "^5.0.0",
+    "comcigan-parser": "^1.0.0",
+    "fastify": "^3.29.0",
+    "school-kr": "^3.1.2",
+    "zod": "^3.14.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.31",
+    "pino-pretty": "^7.6.1",
+    "tsm": "^2.2.1",
+    "typescript": "^4.6.4"
+  }
+}
