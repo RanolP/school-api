@@ -1,14 +1,13 @@
-import { RouteHandler } from 'fastify';
 import * as z from 'zod';
-import { readTimetable } from '../../lib/comcigan.js';
 import {
   mapSchoolRegion,
   mapSchoolType,
   SchoolRegion,
   SchoolType,
-} from '../../lib/common.js';
-import { getLunch } from '../../lib/office-of-education.js';
-import { numberString } from '../../util/zod.js';
+} from '../../lib/common';
+import { getLunch } from '../../lib/office-of-education';
+import { route } from '../../util/web';
+import { numberString } from '../../util/zod';
 
 const LunchQuery = z.object({
   id: z.string(),
@@ -18,7 +17,7 @@ const LunchQuery = z.object({
   month: numberString.optional(),
 });
 
-export const LunchHandler: RouteHandler = async (req) => {
+export default route(async (req) => {
   const query = await LunchQuery.parseAsync(req.query);
   const timetable = await getLunch(
     mapSchoolType(query.type),
@@ -28,4 +27,4 @@ export const LunchHandler: RouteHandler = async (req) => {
     query.month,
   );
   return timetable;
-};
+});

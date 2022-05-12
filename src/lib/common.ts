@@ -1,5 +1,5 @@
-import * as Comcigan from './comcigan.js';
-import * as Ooe from './office-of-education.js';
+import * as Comcigan from './comcigan';
+import * as Ooe from './office-of-education';
 
 export enum SchoolRegion {
   Seoul = '서울',
